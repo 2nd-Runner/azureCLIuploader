@@ -1,0 +1,14 @@
+#!/bin/bash
+
+login() { 
+    # Check if already logged in
+    if [ $(az account show --query user.name -o tsv) ]; then
+        echo "You're already logged in."
+        exit 0
+    fi
+    # Login
+    az login --use-device-code
+    echo "You're logged in."
+}
+
+login
